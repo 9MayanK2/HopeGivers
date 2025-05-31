@@ -1,4 +1,0 @@
-const apis = () => {
-   
-    const local=
-}

@@ -1,6 +1,0 @@
-const apis = () => {
-   
-    const local='http://localhost:5555/';
-
-    
-}

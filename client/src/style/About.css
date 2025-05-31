@@ -1,0 +1,96 @@
+.about-us-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+  }
+  
+  .about-us-container h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: #8A0302;
+    margin-bottom: 20px;
+  }
+  
+  .about-us-container .intro {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  
+  .section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 30px;
+  }
+  
+  .section.reverse {
+    flex-direction: row-reverse;
+  }
+  
+  .section-text {
+    flex: 1;
+  }
+  
+  .section-text h2 {
+    color: #b22222;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .section-text p,
+  .section-text ul {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .section-text ul {
+    padding-left: 20px;
+    list-style-type: disc;
+  }
+  
+  .section-text li {
+    margin-bottom: 10px;
+  }
+  
+  .section-text li strong {
+    color: #8A0302;
+  }
+  
+  .section-image {
+    width: 45%;
+    border-radius: 10px;
+    object-fit: cover;
+    max-height: 300px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  @media (max-width: 768px) {
+    .section {
+      flex-direction: column;
+    }
+  
+    .section.reverse {
+      flex-direction: column;
+    }
+  
+    .section-image {
+      width: 100%;
+      max-height: 250px;
+    }
+  
+    .about-us-container h1 {
+      font-size: 2rem;
+    }
+  
+    .about-us-container .intro {
+      font-size: 1rem;
+    }
+  }
+  

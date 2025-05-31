@@ -1,0 +1,86 @@
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: #fff0f0;
+    border-radius: 10px;
+    border: 2px solid #8A0302;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.form-title {
+    text-align: center;
+    color: #8A0302;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #8A0302;
+    font-weight: bold;
+}
+
+.form-input,
+.form-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #8A0302;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.captcha-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.captcha-code {
+    padding: 10px 20px;
+    background-color: #d0f0c0;
+    font-weight: bold;
+    border-radius: 6px;
+    letter-spacing: 3px;
+    font-size: 18px;
+    margin-right: 10px;
+    color: #8A0302;
+}
+
+.refresh-button {
+    padding: 6px 10px;
+    cursor: pointer;
+    background-color: #8A0302;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.captcha-error {
+    color: red;
+    margin-bottom: 10px;
+}
+
+.checkbox-label {
+    margin-top: 10px;
+    display: block;
+    color: #8A0302;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #8A0302;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #a20a0a;
+}

@@ -1,0 +1,114 @@
+.contact-section {
+    background: #fff;
+    padding: 4rem 2rem;
+    color: #1f2937;
+    font-family: Arial, sans-serif;
+  }
+  
+  .contact-container {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .contact-form-wrapper {
+    flex: 2;
+    min-width: 300px;
+  }
+  
+  .contact-form-wrapper h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #8A0302;
+  }
+  
+  .contact-form-wrapper p {
+    margin-bottom: 2rem;
+    color: #6b7280;
+  }
+  
+  .contact-form label {
+    display: block;
+    margin-bottom: 1.25rem;
+    font-weight: 600;
+    color: #374151;
+  }
+  
+  .contact-form label .required {
+    color: #8A0302;
+    margin-left: 0.25rem;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin-top: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+    resize: vertical;
+    transition: border-color 0.3s;
+  }
+  
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: #8A0302;
+    box-shadow: 0 0 5px #8A0302;
+  }
+  
+  .contact-submit-btn {
+    background-color: #8A0302;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 0.375rem;
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .contact-submit-btn:hover {
+    background-color: #8A0302;
+  }
+  
+  .contact-info {
+    flex: 1;
+    min-width: 280px;
+    background-color: #f9fafb;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    color: #374151;
+  }
+  
+  .contact-info h3 {
+    margin-bottom: 1rem;
+    color: #8A0302;
+  }
+  
+  .contact-info p {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+  .social-link {
+    color:#8A0302;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .social-link:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 768px) {
+    .contact-container {
+      flex-direction: column;
+    }
+  }
+  

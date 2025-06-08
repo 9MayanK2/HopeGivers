@@ -7,19 +7,6 @@ const verifyOtpController = require('../controllers/auth/verifyOtp.js');
 const getOtpTimeController = require('../controllers/auth/getOtpTime.js');
 const updatePasswordController = require('../controllers/auth/passwordUpdate');
 const getAccessController = require('../controllers/auth/getAccess');
-// Home page controller
-const getHomeController = require('../controllers/home/home.js');
-const verifyToken=require('../middleware/verifyToken.js');
-
-//Donor Regisration route
-const receiverController = require('../controllers/home/receiver.js');
-const DonorRegisterController = require('../controllers/home/donor.js');
-
-// ChatBot Route
-const chatBotController = require('../controllers/home/chatBot.js');
-
-const FeedbackController = require('../controllers/pages/feedback.js');
-const ContactController = require('../controllers/pages/contact.js');
 
 router.post('/register', registerController);
 router.post('/login', loginController);
@@ -28,14 +15,5 @@ router.post('/otp/verify', verifyOtpController);
 router.post('/otp/time', getOtpTimeController);
 router.post('/password/update', updatePasswordController);
 router.post('/get/access', getAccessController);
-// Home Page Route
-router.post('/home',verifyToken, getHomeController);
-router.post('/donor/register', DonorRegisterController);
-// router.post('/registration/receiver', receiverController);
-// ChatBot Route
-router.post('/chat', chatBotController);
 
-// Pages like Feedback, Contact, About
-router.post('/feedback/form', FeedbackController);
-router.post('/contactus', ContactController);
 module.exports = router;

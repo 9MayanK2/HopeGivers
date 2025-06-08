@@ -1,37 +1,23 @@
-const Receiver = require("../../models/Receiver");
+const express = require('express');
+const router = express.Router();
+const Donor = require('../../models/Donor');
 
+const receiver = async (req, res) => {
+    const { bloodGroup, country, state, district, city } = req.body;
 
-const ReceiverUser = async (req, res, next) => {
     try {
-        // Clone request data and remove retypePassword
-        const dataToValidate = { ...req.body };
-        delete dataToValidate.retypePassword;
-    
-        // Validate the request body
-        const { error: validationError } = validateReceiver(dataToValidate);
-    
-        if (validationError) {
-        const error = new Error(validationError.details[0].message);
-        error.statusCode = 400;
-        throw error;
-        }
-    
-        const { name, bloodGroup, country, state, district, city } = dataToValidate;
-    
-        // Create and save new receiver
-        const newReceiver = new Receiver({
-        name,
-        bloodGroup,
-        country,
-        state,
-        district,
-        city,
-        });
-    
-        await newReceiver.save();
-    
-        res.status(201).json({ message: "Receiver registered successfully" });
-    } catch (error) {
-        next(error);
+        const donors = await Donor.find({
+            bloodGroup,
+            country,
+            state,
+            district,
+            city,
+        }).select('fullName email  mobileNumber');
+
+        res.status(200).json(donors);
+    } catch (err) {
+        res.status(500).json({ message: 'Search failed', error: err.message });
     }
-    }
+};
+
+module.exports = receiver;

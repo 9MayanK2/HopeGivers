@@ -26,7 +26,7 @@ const ForgetPassword = () => {
 
         try {
             setLoading(true);
-            const response = await fetch(apis().forgetPassword, {
+            const response = await fetch(apis().list.forgetPassword, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

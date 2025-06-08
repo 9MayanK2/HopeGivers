@@ -27,7 +27,7 @@ const Register = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const response = await fetch(apis().registerUser, {
+      const response = await fetch(apis().list.registerUser, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),

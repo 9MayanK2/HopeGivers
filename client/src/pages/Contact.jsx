@@ -26,7 +26,7 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(apis().contactUs, {
+      const response = await fetch(apis().list1.contactUs, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

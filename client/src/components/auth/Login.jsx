@@ -25,7 +25,7 @@ const Login = () => {
 
     try {
       setLoading(true);
-      const response = await fetch(apis().loginUser, {
+      const response = await fetch(apis().list.loginUser, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

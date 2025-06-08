@@ -92,9 +92,11 @@ export default function Home() {
         </div>
         <div className="buttons">
           <Link to="/donor/register">
-          <button className="donate">Donate Blood →</button>
+            <button className="donate">Donate Blood →</button>
           </Link>
-          <button className="request">Request Blood →</button>
+          <Link to="/donor/search-donors">
+            <button className="request">Request Blood →</button>
+          </Link>
         </div>
       </div>
       {/* ---------------------Features----------------------*/}

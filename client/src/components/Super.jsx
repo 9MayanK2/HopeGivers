@@ -14,7 +14,7 @@ const Super = () => {
         const getRouteAccess = async () => {
             try {
                 setLoading(true);
-                const response = await fetch(apis().getAccess, {
+                const response = await fetch(apis().list.getAccess, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

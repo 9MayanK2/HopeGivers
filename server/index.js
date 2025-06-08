@@ -6,6 +6,7 @@ const cors=require('cors');
 const mongoose=require('mongoose');
 const getConnection=require('./utils/getConnection'); // Import the getConnection function  
 const userRoutes=require('./routes/user'); // Import user routes
+const homeRoutes=require("./routes/home")
 
 
 
@@ -14,7 +15,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-app.use('/user',userRoutes); // Use user routes for API requests
+app.use('/',homeRoutes);
+app.use('/user/auth',userRoutes); // Use user routes for API requests
 
 
 app.use((error,req,res,next)=>{

@@ -26,7 +26,7 @@ const Feedback = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(apis().feedbackForm, {
+      const response = await fetch(apis().list1.feedbackForm, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

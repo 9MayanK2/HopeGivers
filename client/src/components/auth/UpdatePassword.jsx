@@ -41,7 +41,7 @@ const UpdatePassword = () => {
                 return;
             }
             setLoading(true);
-            const response = await fetch(apis().updatePassword, { // Adjust the endpoint as needed
+            const response = await fetch(apis().list.updatePassword, { // Adjust the endpoint as needed
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

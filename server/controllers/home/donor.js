@@ -25,7 +25,6 @@ const DonorUser = async (req, res, next) => {
       state,
       district,
       city,
-      userId,
       email,
       password,
       isAvailable,
@@ -57,7 +56,6 @@ const DonorUser = async (req, res, next) => {
       state,
       district,
       city,
-      userId,
       isAvailable,
       authorize,
     });
@@ -95,7 +93,6 @@ function validateUser(data) {
     state: joi.string().required(),
     district: joi.string().required(),
     city: joi.string().required(),
-    userId: joi.string().required(),
     isAvailable: joi.boolean(),
     authorize: joi.boolean(),
   });

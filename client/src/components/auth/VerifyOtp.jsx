@@ -39,7 +39,7 @@ const VerifyOtp = () => {
 
     const getTime = async () => {
         try {
-            const response = await fetch(apis().getOtpTime, {
+            const response = await fetch(apis().list.getOtpTime, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,11 +64,13 @@ const VerifyOtp = () => {
                 throw new Error('Invalid sendTime format from server');
             }
 
-            const remainingTime = sendTimeMs - new Date().getTime();
+            const otpValidityMs = 5 * 60 * 1000; // 5 minutes OTP validity
+            const remainingTime = (sendTimeMs + otpValidityMs) - new Date().getTime();
+
             console.log("Remaining Time (ms):", remainingTime); // Debug log
 
             if (remainingTime > 0) {
-                setOtpTime(remainingTime); // Timer should expect ms
+                setOtpTime(remainingTime);
             } else {
                 console.log("OTP already expired");
             }
@@ -77,7 +79,8 @@ const VerifyOtp = () => {
             toast.error(error.message || 'Something went wrong');
             console.error("Error in getTime:", error);
         }
-    }
+    };
+
 
 
     useEffect(() => {
@@ -104,7 +107,7 @@ const VerifyOtp = () => {
         // Handle OTP verification logic here
         try {
             setLoading(true);
-            const response = await fetch(apis().otpVerify, {
+            const response = await fetch(apis().list.otpVerify, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -134,59 +137,59 @@ const VerifyOtp = () => {
 
     return (
         <div> <Navbar />
-        <div className='auth_main'>
-           
-            <div className='auth_left'>
-                <HomePage />
-            </div>
-            <div className='auth_right'>
-                <div className='auth_card'>
-                    <form onSubmit={submitHandler}>
-                        <div className="auth_container">
-                            <div className='auth_header'>
-                                <FaFingerprint />
-                                <p className='auth_heading'>Verify OTP</p>
-                                <p className='auth_title'>Enter the OTP sent to your email</p>
-                            </div>
-                            <div className='auth_item'>
-                                <label> OTP *</label>
-                                <div className='otp_input_container'>
-                                    {inputRef.map((item, index) => {
-                                        return (
-                                            <input
-                                                required
-                                                key={index}
-                                                onChange={(e) => { inputChange(e, index) }}
-                                                ref={item}
-                                                onInput={(e) => {
-                                                    if (e.target.value.length > 1) {
-                                                        e.target.value = e.target.value.slice(0, 1);
-                                                    }
-                                                }}
-                                                type='number'
-                                                className='ui_input otp_input' />
-                                        )
-                                    })}
+            <div className='auth_main'>
 
+                <div className='auth_left'>
+                    <HomePage />
+                </div>
+                <div className='auth_right'>
+                    <div className='auth_card'>
+                        <form onSubmit={submitHandler}>
+                            <div className="auth_container">
+                                <div className='auth_header'>
+                                    <FaFingerprint />
+                                    <p className='auth_heading'>Verify OTP</p>
+                                    <p className='auth_title'>Enter the OTP sent to your email</p>
+                                </div>
+                                <div className='auth_item'>
+                                    <label> OTP *</label>
+                                    <div className='otp_input_container'>
+                                        {inputRef.map((item, index) => {
+                                            return (
+                                                <input
+                                                    required
+                                                    key={index}
+                                                    onChange={(e) => { inputChange(e, index) }}
+                                                    ref={item}
+                                                    onInput={(e) => {
+                                                        if (e.target.value.length > 1) {
+                                                            e.target.value = e.target.value.slice(0, 1);
+                                                        }
+                                                    }}
+                                                    type='number'
+                                                    className='ui_input otp_input' />
+                                            )
+                                        })}
+
+                                    </div>
+                                </div>
+                                <div className='timer_container'>
+                                    <ResendButton />
+                                </div>
+                                <div className='auth_action'>
+                                    <Button>
+                                        <LoadingButton loading={loading} title="Verify" />
+                                    </Button>
+                                </div>
+                                <div>
+                                    <BackToLogin />
                                 </div>
                             </div>
-                            <div className='timer_container'>
-                                <ResendButton />
-                            </div>
-                            <div className='auth_action'>
-                                <Button>
-                                    <LoadingButton loading={loading} title="Verify" />
-                                </Button>
-                            </div>
-                            <div>
-                                <BackToLogin />
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
-            </div>
-          <Footer />
+            <Footer />
         </div>
     )
 }

@@ -2,15 +2,15 @@ const Donor = require('../../models/Donor');
 const bcrypt = require('bcrypt');
 const joi = require('joi');
 
+// Controller function
 const DonorUser = async (req, res, next) => {
   try {
-    // Clone request data and remove retypePassword
+    // Clone and clean data
     const dataToValidate = { ...req.body };
     delete dataToValidate.retypePassword;
 
-    // Validate the request body
+    // Validate request body
     const { error: validationError } = validateUser(dataToValidate);
-
     if (validationError) {
       const error = new Error(validationError.details[0].message);
       error.statusCode = 400;
@@ -31,10 +31,10 @@ const DonorUser = async (req, res, next) => {
       authorize,
     } = dataToValidate;
 
-    const formattedName = fullName.toLowerCase();
-    const formattedEmail = email.toLowerCase();
+    const formattedName = fullName.trim().toLowerCase();
+    const formattedEmail = email.trim().toLowerCase();
 
-    // Check if email already exists
+    // Check if email exists
     const foundUser = await Donor.findOne({ email: formattedEmail });
     if (foundUser) {
       const error = new Error('This email already exists');
@@ -45,7 +45,7 @@ const DonorUser = async (req, res, next) => {
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create and save new donor
+    // Create new donor
     const newDonor = new Donor({
       fullName: formattedName,
       email: formattedEmail,
@@ -61,20 +61,21 @@ const DonorUser = async (req, res, next) => {
     });
 
     const savedUser = await newDonor.save();
+
+    // Success response
     res.status(201).json({
       message: 'Donor registered successfully',
       status: true,
-      name: savedUser.fullName, // fixed from fullname to fullName
+      name: savedUser.fullName,
     });
 
   } catch (error) {
-    console.log('Error in Donor register controller:', error.message);
-    next(error); // Pass the error to error-handling middleware
+    console.error('Error in Donor register controller:', error.message);
+    next(error); // Pass to global error middleware
   }
 };
 
-module.exports = DonorUser;
-
+// Joi validation
 function validateUser(data) {
   const userSchema = joi.object({
     fullName: joi.string().min(3).max(30).required(),
@@ -97,6 +98,7 @@ function validateUser(data) {
     authorize: joi.boolean(),
   });
 
-  // Do not validate retypePassword — remove it from data before calling this function
   return userSchema.validate(data);
 }
+
+module.exports = DonorUser;

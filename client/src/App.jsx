@@ -16,6 +16,7 @@ import AboutUs from "./pages/About";
 
 import Super from './components/Super';           // Handles OTP/Password token access
 import PrivateRoute from './components/PrivateRoute';  // Handles main login token access
+import Footer from './components/navbar/Footer';
 
 const App = () => {
   return (
@@ -42,9 +43,10 @@ const App = () => {
       <Route path="/donor/search-donors" element={<ReceiverForm />} />
       <Route path="/feedback/form" element={<PrivateRoute><Feedback /></PrivateRoute>} />
       <Route path="/contactus" element={<PrivateRoute><ContactUs /></PrivateRoute>} />
-      <Route path="/aboutus" element={<AboutUs/>} />
+      <Route path="/aboutus" element={<AboutUs />} />
     </Routes>
   );
+  <Footer />;
 };
 
 export default App;

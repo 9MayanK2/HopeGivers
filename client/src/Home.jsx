@@ -4,7 +4,7 @@ import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/navbar/Footer";
 import bloodDonationImg from "./assets/blood-donation.png";
 import bloodImage from "./assets/BloodImage.png";
-import { FaSearch, FaPhoneAlt, FaRegListAlt } from "react-icons/fa";
+import { FaSearch, FaPhoneAlt, FaRegListAlt, FaArrowRight } from "react-icons/fa";
 import { FiCheckCircle } from "react-icons/fi";
 import HowItWorkImg from "./assets/HowItWork.png";
 import { Link } from "react-router-dom";
@@ -72,7 +72,7 @@ export default function Home() {
         </div>
 
         <Link to="/contactus">
-          <div className="floating-call-btn">
+          <div className="floating-call-btn" title="Call Us Now">
             <FaPhoneAlt />
           </div>
         </Link>
@@ -92,10 +92,10 @@ export default function Home() {
         </div>
         <div className="buttons">
           <Link to="/donor/register">
-            <button className="donate">Donate Blood →</button>
+            <button className="donate"> <FaArrowRight style={{ marginRight: "5px",marginTop:"3px" }} /> Donate Blood </button>
           </Link>
           <Link to="/donor/search-donors">
-            <button className="request">Request Blood →</button>
+            <button className="request" > <FaArrowRight style={{ marginRight: "5px",marginTop:"3px" }} /> Request Blood </button>
           </Link>
         </div>
       </div>
